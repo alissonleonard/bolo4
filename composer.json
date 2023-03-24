@@ -1,0 +1,5 @@
+{
+    "require-dev": {
+        "dereuromark/cakephp-ide-helper": "^1.18"
+    }
+}
