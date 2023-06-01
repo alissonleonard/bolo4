@@ -12,20 +12,21 @@ use Cake\Validation\Validator;
 
 use Cake\ORM\Query;
 
-    class ArticlesTable extends Table
-    {
-        public function initialize(array $config): void
+class ArticlesTable extends Table
 {
-    $this->addBehavior('Timestamp');
-    // Change this line
-    $this->belongsToMany('Tags', [
-        'joinTable' => 'articles_tags',
-        'dependent' => true
-    ]);
-}
+    public function initialize(array $config): void
+    {
+        //save and create date modification
+        $this->addBehavior('Timestamp');
+        // Change this line
+        $this->belongsToMany('Tags', [
+            'joinTable' => 'articles_tags',
+            'dependent' => true
+        ]);
+    }
 
 
-        public function beforeSave(EventInterface $event, $entity, $options)
+    public function beforeSave(EventInterface $event, $entity, $options)
     {
         if ($entity->isNew() && !$entity->slug) {
             $sluggedTitle = Text::slug($entity->title);
@@ -105,4 +106,4 @@ protected function _buildTags($tagString)
     return $out;
 }
 
-    }
+}

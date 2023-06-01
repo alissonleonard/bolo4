@@ -52,6 +52,13 @@ class TagsTable extends Table
             'targetForeignKey' => 'article_id',
             'joinTable' => 'articles_tags',
         ]);
+
+        $this->belongsToMany('Consoles', [   
+            'foreignKey' => 'console_id',
+            'targetForeignKey' => 'console_id',
+            'joinTable' => 'console_tags',
+        ]);
+    
     }
 
     /**
